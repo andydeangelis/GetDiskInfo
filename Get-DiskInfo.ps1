@@ -86,10 +86,8 @@ if (-not (Get-InstalledModule -Name "ImportExcel" -ErrorAction SilentlyContinue)
 		Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 		Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 		Install-Module -Name "ImportExcel" -Force -Scope AllUsers
-		Install-Module -Name "PSParallel" -Force -Scope AllUsers
 		Write-Host "All required PoSH modules successfully installed on" $ENV:COMPUTERNAME -ForegroundColor Green
-		Import-Module "ImportExcel"
-		Import-Module "PSParallel"
+		Import-Module "ImportExcel"		
 	}
 	catch
 	{
@@ -104,9 +102,7 @@ else
 	{
 		Set-ExecutionPolicy Unrestricted -Force
 		Update-Module -Name "ImportExcel" -Force -Confirm:$false -ErrorAction Stop
-		Update-Module "PSParallel" -Force -Confirm:$false -ErrorAction Stop
 		Import-Module "ImportExcel"
-		Import-Module "PSParallel"
 		Write-Host "All required modules are up to date on" $ENV:COMPUTERNAME -ForegroundColor Green
 	}
 	catch
